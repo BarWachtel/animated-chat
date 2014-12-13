@@ -21,10 +21,10 @@ var port_number = 8080;
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res) {
-  console.log('serving file /home.html');
-  res.sendFile('/home.html');
-});
+// app.get('/', function(req, res) {
+//   console.log('serving file /home.html');
+//   res.sendFile('home.html');
+// });
 
 io.on('connection', function(socket) {
   console.log('User connected yay!');
