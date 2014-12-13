@@ -21,6 +21,10 @@ var port_number = 8080;
 
 app.use(express.static(__dirname + '/public'));
 
+app.post('/login', function(req, res) {
+  res.send('Hey ' + req.username + ' thanks for logging on');
+});
+
 // app.get('/', function(req, res) {
 //   console.log('serving file /home.html');
 //   res.sendFile('home.html');
