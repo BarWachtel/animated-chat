@@ -6,8 +6,8 @@ Sending login request information in the following manners:
 
 Also need to handle creating a new user account
 */
-const serverUrl = 'localhost',
-      port = '8080';
+const serverUrl = 'http://localhost',
+      port = '9000';
 
 var $userLoginForm,
     $usernameField,
@@ -16,8 +16,6 @@ var $userLoginForm,
     $loginButton,
     $facebookLoginButton,
     $createAccountButton;
-
-
 
 
 jQuery(function($) {
@@ -36,24 +34,29 @@ jQuery(function($) {
 });
 
 function userLogin(e) {
-  e.preventDefault();
+  // e.preventDefault();
 
   //Get details to server
   $.ajax({
     type: 'POST',
-    xhrFields: {
-      withCredentials: true
-    },
+    // xhrFields: {
+    //   withCredentials: true
+    // },
     data: {
       username: $usernameField.val(),
       password: $passwordField.val()
     },
     url: serverUrl + ':' + port + '/login',
-    success: console.log,
+    success: function(res) {
+      console.log(res);
+    },
     error: console.log
   });
   //withCredentials used for CORS (cross origin resource sharing)
 
   console.log('Login button pressed!');
   console.log('Ajax request send to URL:' + serverUrl + ':' + port + '/login');
+  console.log('username ' + $usernameField.val());
+  console.log('password ' + $passwordField.val());
+  return false;
 }
